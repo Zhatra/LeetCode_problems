@@ -1,4 +1,4 @@
-#### Min stack
+### Min stack
 
 <div class="_1l1MA" data-track-load="description_content"><p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
 
