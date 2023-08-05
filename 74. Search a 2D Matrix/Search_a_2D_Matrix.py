@@ -5,8 +5,10 @@ class Solution:
         top, bot = 0, ROWS - 1
         while top <= bot:
             row = (top + bot) // 2
+            #the largest value in this row matrix[row][-1]
             if target > matrix[row][-1]:
                 top = row + 1
+            #the  smallest value in this row
             elif target < matrix[row][0]:
                 bot = row - 1
             else:
@@ -18,6 +20,7 @@ class Solution:
         l, r = 0, COLS - 1
         while l <= r:
             m = (l + r) // 2
+            #value in this target row at position middle
             if target > matrix[row][m]:
                 l = m + 1
             elif target < matrix[row][m]:
