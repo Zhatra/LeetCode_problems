@@ -11,3 +11,33 @@ class Solution:
             res[i] *= postfix
             postfix *= nums[i]
         return res
+
+# from typing import List
+
+# class Solution:
+    
+#     def productExceptSelf(self, nums: List[int]) -> List[int]:
+#         list_length = len(nums)
+        
+#         # Inicializar listas para almacenar productos acumulativos
+#         left_products = [1] * list_length
+#         right_products = [1] * list_length
+#         final_products = [1] * list_length
+        
+#         # Calcular productos acumulativos desde la izquierda
+#         left_accumulator = 1
+#         for i in range(list_length):
+#             left_products[i] = left_accumulator
+#             left_accumulator *= nums[i]
+        
+#         # Calcular productos acumulativos desde la derecha
+#         right_accumulator = 1
+#         for i in reversed(range(list_length)):
+#             right_products[i] = right_accumulator
+#             right_accumulator *= nums[i]
+        
+#         # Combinar productos acumulativos izquierdos y derechos
+#         for i in range(list_length):
+#             final_products[i] = left_products[i] * right_products[i]
+        
+#         return final_products
