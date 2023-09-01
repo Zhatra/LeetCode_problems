@@ -41,7 +41,7 @@ class Solution:
             final_products[i] = left_products[i] * right_products[i]
         
         return final_products
-
+#pruebas
 if __name__ == "__main__":
     sol = Solution()
     result = sol.productExceptSelf([1, 2, 3, 4])
