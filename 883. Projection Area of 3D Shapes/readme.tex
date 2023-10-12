@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\lstset{
+  basicstyle=\ttfamily\small,  % Estilo básico
+  breaklines=true,  % Permite la ruptura de líneas
+  numbers=left,  % Números de línea a la izquierda
+  numberstyle=\tiny,  % Estilo de los números de línea
+  frame=tb,  % Marco en la parte superior e inferior
+  columns=fullflexible,  % Columnas flexibles para manejar espacios
+  showstringspaces=false,  % No mostrar espacios en cadenas
+  commentstyle=\color{gray},  % Estilo de los comentarios
+  keywordstyle=\color{blue},  % Estilo de las palabras clave
+  identifierstyle=\color{violet},  % Estilo de los identificadores
+  stringstyle=\color{red}  % Estilo de las cadenas de texto
+}
+
+
+\title{Reporte de Código: 238. Product of Array Except Self}
+\author{Christian Eulogio Sanchez \\ 320196872}
+\date{31-08-2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Reporte}
+
+\subsection{¿Cómo logré resolver el problema?}
+Entender el problema era la clave. Estás buscando el área proyectada de una cuadrícula tridimensional en los planos XY, YZ, y ZX. Por lo tanto, debes evaluar la cuadrícula desde tres ángulos diferentes.
+
+\subsection{Estructuras de Datos Utilizadas}
+Usé una matriz 2D (lista de listas en Python) para representar la cuadrícula. Las variables individuales \texttt{xy\_proj}, \texttt{yz\_proj}, y \texttt{zx\_proj} se usaron para almacenar las áreas de las proyecciones en los planos XY, YZ y ZX, respectivamente.
+
+\subsection{Razón para la Solución}
+Para \texttt{xy\_proj}, simplemente iteré a través de la cuadrícula y conté las celdas con un valor mayor que 0. \\
+Para \texttt{yz\_proj} y \texttt{zx\_proj}, hallé la altura máxima en cada fila y columna respectivamente y las sumé.
+
+\subsection{Dificultades}
+La mayor dificultad fue entender bien el problema. Una vez que captas la esencia, el resto es simplemente aplicar lógica básica y usar bucles para iterar a través de la matriz.
+
+\section{Código Fuente}
+
+A continuación se presenta el código fuente en Python que resuelve el problema:
+
+\begin{lstlisting}[language=Python]
+
+class Solution:
+    def projectionArea(self, grid: List[List[int]]) -> int: 
+        xy_proj = 0  # Area of projection on xy-plane
+        yz_proj = 0  # Area of projection on yz-plane
+        zx_proj = 0  # Area of projection on zx-plane
+        
+        
+
+        n = len(grid)  # Get the dimensions of the grid
+        
+        # Calculate xy_proj
+        for i in range(n):
+            for j in range(n):
+                if grid[i][j] > 0:
+                    xy_proj += 1
+        
+        # Calculate yz_proj
+        for i in range(n):
+            max_height_row = 0  # Max height in the current row
+            for j in range(n):
+                max_height_row = max(max_height_row, grid[i][j])
+            yz_proj += max_height_row
+        
+        # Calculate zx_proj
+        for j in range(n):
+            max_height_col = 0  # Max height in the current column
+            for i in range(n):
+                max_height_col = max(max_height_col, grid[i][j])
+            zx_proj += max_height_col
+        
+        # Total area of all three projections
+        total_area = xy_proj + yz_proj + zx_proj
+        
+        return total_area
+
+
+\end{lstlisting}
+
+\section{Instrucciones para Ejecutar el Código en Python}
+
+\begin{enumerate}
+    \item \textbf{Guardar el Código:} Copia el código en un editor de texto y guárdalo con una extensión \texttt{.py}, por ejemplo, \texttt{solution.py}. (Agregue el archivo solution.py con el codigo para que no tengas que hacer este paso manualmente)
+    
+    \item \textbf{Abrir Terminal o Consola:} Abre una terminal o consola en tu sistema operativo.
+    
+    \item \textbf{Navegar al Directorio:} Usa el comando \texttt{cd} para navegar al directorio donde guardaste \texttt{solution.py}.
+    \begin{lstlisting}[language=bash]
+    cd path/to/directory
+    \end{lstlisting}
+    
+    \item \textbf{Ejecutar el Código:} Una vez que estés en el directorio correcto, ejecuta el siguiente comando para iniciar el intérprete de Python:
+    \begin{lstlisting}[language=bash]
+    python solution.py
+    \end{lstlisting}
+    O si tienes Python 3.x instalado:
+    \begin{lstlisting}[language=bash]
+    python3 solution.py
+    \end{lstlisting}
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Screensho.jpg}
+    \caption{Codigo en LeetCode}
+    \label{fig:enter-label}
+\end{figure}
+
+\end{document}
